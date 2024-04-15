@@ -31,7 +31,7 @@ MainWindow::MainWindow(QWidget *parent) :
     this->ui->sensorPlot->xAxis->setLabel("Time");
     this->ui->sensorPlot->yAxis->setLabel("Degrees");
     this->ui->sensorPlot->xAxis->setTicker(timeTicker);
-    this->ui->sensorPlot->yAxis->setRange(-180, 180); // Assuming Pitch and Roll are in degrees
+    this->ui->sensorPlot->yAxis->setRange(-180, 180); 
     this->ui->sensorPlot->legend->setVisible(true);
     this->ui->sensorPlot->replot();
 
@@ -117,7 +117,6 @@ void MainWindow::on_MQTTmessage(QString payload){
     ui->outputText->appendPlainText(payload);
     ui->outputText->ensureCursorVisible();
 
-    // Assuming the payload is a JSON string with sensor data
     QJsonDocument jsonDoc = QJsonDocument::fromJson(payload.toUtf8());
     QJsonObject jsonObject = jsonDoc.object();
 
